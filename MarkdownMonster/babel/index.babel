@@ -1,0 +1,98 @@
+const startingText = `Heading
+=======
+
+Sub-heading
+-----------
+# H1
+## H2 
+### Another deeper heading
+ 
+Paragraphs are separated
+by a blank line.
+
+Leave 2 spaces at the end of a line to do a  
+line break
+
+Text attributes *italic*, **bold**, 
+\`monospace\`, ~~strikethrough~~ .
+
+Code block:
+\`\`\`
+var add1 = function(v){
+  return v + 1;
+}
+\`\`\`
+
+Shopping list:
+
+  * apples
+  * oranges
+  * pears
+
+Numbered list:
+
+  1. apples
+  2. oranges
+  3. pears
+`
+
+class Input extends React.Component {
+  constructor(props){
+    super(props);
+    
+    this.state = {
+      markdown: startingText
+    };
+    this.enterMarkdown = this.enterMarkdown.bind(this);
+  }
+  
+  componentDidMount(){
+    document.getElementById('result').innerHTML = marked(this.state.markdown);
+  }
+  
+  enterMarkdown(event){
+    let value = event.target.value
+    this.setState({markdown: value});  document.getElementById('result').innerHTML = marked(value);
+  }
+  
+  render() {
+    return (
+      <div className="input">
+        <textarea 
+          value={this.state.markdown}
+          placeholder="Put your markdown here..."
+          onChange={this.enterMarkdown}>{this.state.markdown}</textarea>
+      </div>
+
+    );
+  }
+}
+
+class Output extends React.Component {
+  render() {
+    return (
+      <div id="result" className="output">
+        
+      </div>
+    );
+  }
+}
+
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <div className="head">
+          <h1 id="title">Markdown Monster</h1>
+          <a id="github" href="https://github.com/forkerino" target="_blank"><img src="https://cdn.iconscout.com/public/images/icon/free/png-128/github-brand-logo-3c9d78d3a4407227-128x128.png"/></a>
+        </div>
+        <div className="body">
+          <Input />
+          <Output />
+        </div>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<App/>, document.getElementById('app'));
