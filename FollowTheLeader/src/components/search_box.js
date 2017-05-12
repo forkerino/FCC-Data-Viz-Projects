@@ -6,14 +6,16 @@ export default class SearchBox extends Component {
 
         this.state = {term: ''};
     }
-    onInputChange(event) {
-        this.setState({term: event.target.value});
+    
+    onInputChange(term) {
+        this.setState({term});
+        this.props.onSearchTerm(term);
     }
 
     render() {
         return (
             <input 
-                onChange={this.onInputChange} 
+                onChange={event => this.onInputChange(event.target.value)} 
                 value={this.state.term}/>
         );
     }
