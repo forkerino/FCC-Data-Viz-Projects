@@ -14,5 +14,15 @@
     "Visualization"
   ],
   "author": "Pieter Stokkink",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^2.5.1",
+    "babel": "^6.23.0",
+    "babel-preset-latest": "^6.24.1",
+  },
+  "dependencies": {
+    "axios": "^0.16.1",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
+  }
 }
