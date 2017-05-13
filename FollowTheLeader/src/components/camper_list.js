@@ -3,14 +3,14 @@ import CamperItem from './camper_item';
 
 const CamperList = ({list}) => {
     if (!list) {
-        return <div>Loading...</div>
+        return <tbody><tr></tr></tbody>;
     }
     const camperItems = list.map((camper,i) => <CamperItem key={i} camper={camper} number={i+1}/>);
 
     return (
-        <ul>
+        <tbody>
             {camperItems}
-        </ul>
+        </tbody>
     );
 };
 

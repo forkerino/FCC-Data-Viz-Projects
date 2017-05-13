@@ -7,15 +7,17 @@ export default class CamperItem extends Component {
     }
     render() {
         return (
-            <li>
-                {this.props.number}
-                <a href={`https://www.freecodecamp.com/${this.props.camper.username}`} target="_blank">
-                    <img src={this.props.camper.img} height="80px" width="80px"/> 
-                    <p>{this.props.camper.username}</p>
-                </a>
-                <p>{this.props.camper.recent}</p>
-                <p>{this.props.camper.alltime}</p>
-            </li>
+            <tr>
+                <td className="position">{this.props.number}</td>
+                <td>
+                    <a href={`https://www.freecodecamp.com/${this.props.camper.username}`} target="_blank">
+                        <img src={this.props.camper.img}/> 
+                        <span>{this.props.camper.username}</span>
+                    </a>
+                </td>
+                <td className="points">{this.props.camper.recent}</td>
+                <td className="points">{this.props.camper.alltime}</td>
+            </tr>
 
         )
     }

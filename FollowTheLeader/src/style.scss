@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+$fccgreen: #006400;
+$grey: #222;
+$fontstack: 'Source Sans Pro', sans-serif;
+
+body {
+    margin: 0;
+    font-family: $fontstack;
+
+    #header {
+        background-color: $fccgreen;
+        color: white;
+        margin: 0;
+        display: flex;
+        justify-content: space-between;
+
+        img {
+            width: 20%;
+            
+        }
+        
+        input {
+            width: 20%;
+            height: 1.5rem;
+            margin-top: 5px;
+            margin-right: 5px;
+        }
+    }
+
+    .follow {
+        width: 80%;
+        margin: auto;
+        margin-top: 50px;
+        text-align: center;
+        background: $fccgreen;
+        color: white;
+        height: 40px;
+        border-radius: 5px 5px 0 0 ;
+    }
+
+    table {
+        width: 80%;
+        margin: auto;
+        margin-bottom: 50px;
+        border: 1px solid $grey;
+        border-radius: 0 0 5px 5px;
+        border-collapse: collapse;
+        thead {
+            tr {
+                border: 1px solid $grey;
+            }
+            th {
+                text-align: left;
+                font-size: 1.5rem;
+            }
+
+            .hash {
+                width: 3rem;
+                text-align: center;
+            }
+        }
+        tr:nth-child(even) {
+            background-color: #eee;
+        }
+        
+        td {
+            font-size: 20px;
+            padding: 0;
+            a {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                text-decoration: none;
+                color: $grey;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+
+                img {
+                    width: 60px;
+                    height: 60px;
+                    border: 2px solid $fccgreen;
+                    border-radius: 5px 2px 5px 2px;      
+                    margin: 5px;
+                    margin-right: 10px;
+                }
+                span {
+                    font-size: 20px;
+                }
+            }
+              
+        }
+        .position {
+            font-size: 2rem;   
+            text-align: center;   
+            padding: 5px;  
+        } 
+        .points {
+            text-align: right;
+            padding-right: 5px;
+            width: 20%;
+            
+        }
+        .recent, .alltime {
+            color: $fccgreen;
+            cursor: pointer;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        .activesort::before {
+            content: "⮟";
+        }
+    }
+    #github img {
+        width: 60px;
+        height: 60px;
+    }
+}
+

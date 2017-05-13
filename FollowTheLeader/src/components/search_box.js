@@ -16,7 +16,8 @@ export default class SearchBox extends Component {
         return (
             <input 
                 onChange={event => this.onInputChange(event.target.value)} 
-                value={this.state.term}/>
+                value={this.state.term}
+                placeholder="Search a user..."/>
         );
     }
 }
