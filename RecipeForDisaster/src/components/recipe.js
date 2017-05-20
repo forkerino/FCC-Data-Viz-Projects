@@ -14,6 +14,8 @@ export default class Recipe extends Component {
                 <ul>
                     {ingredients}
                 </ul>
+                <button onClick={this.props.editRecipe}>Edit</button>
+                <button onClick={this.props.deleteRecipe}>Delete</button>
             </div>
         )
     }
