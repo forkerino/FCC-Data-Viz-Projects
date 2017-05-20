@@ -4,6 +4,7 @@
   "description": "Recipe Box React App FCC Data Viz",
   "main": "index.js",
   "scripts": {
+    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -13,5 +14,19 @@
     "Recipes"
   ],
   "author": "Pieter Stokkink",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.1",
+    "node-sass": "^4.5.3",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "sass-loader": "^6.0.5",
+    "style-loader": "^0.17.0",
+    "webpack": "^2.5.1",
+    "webpack-dev-server": "^2.4.5"
+  }
 }
