@@ -1,0 +1,17 @@
+{
+  "name": "recipefordisaster",
+  "version": "1.0.0",
+  "description": "Recipe Box React App FCC Data Viz",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "FCC",
+    "Data",
+    "Visualization",
+    "Recipes"
+  ],
+  "author": "Pieter Stokkink",
+  "license": "ISC"
+}
