@@ -44,7 +44,7 @@ class App extends Component {
     saveRecipe(e, name, ingredients, id = Math.max(...Object.keys(this.state.recipes).map(Number))+1){
         e.preventDefault();
         let newRecipes = Object.assign({}, this.state.recipes, {[id]: {id: id, title: name, ingredients: ingredients.split(',').map(e=>e.trim())}});
-        this.setState({recipes: newRecipes, isModalOpen: false});
+        this.setState({recipes: newRecipes, isModalOpen: false, modal: {}});
     }
 
     editRecipe(id, e) {
@@ -56,19 +56,22 @@ class App extends Component {
     deleteRecipe(id, e) {
         let newState = {
             recipes: _.omit(this.state.recipes, id),
-            isModalOpen: false
+            isModalOpen: false,
+            modal: {}
         }
         this.setState(newState);
     }
 
     render() {
         return (
-            <div>
+            <div className="container">
+                <button id="addrecipe" onClick={this.addRecipe}>+</button>
+                <h1>Recipes for Disaster!</h1>
                 <Modal isModalOpen={this.state.isModalOpen} closeModal={this.closeModal} saveRecipe={this.saveRecipe} modalContent={this.state.modal}/>
                 <RecipeList recipes={this.state.recipes}
                     editRecipe={this.editRecipe}
                     deleteRecipe={this.deleteRecipe}/>
-                <button onClick={this.addRecipe}>Add recipe</button>
+                
                 <a id="github" href="https://github.com/forkerino" target="_blank"><img src="https://cdn.iconscout.com/public/images/icon/free/png-128/github-brand-logo-3c9d78d3a4407227-128x128.png"/></a>
             </div>
         )

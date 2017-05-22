@@ -9,7 +9,7 @@ export default class Recipe extends Component {
     render(){
         const ingredients = this.props.ingredients.map((ing,i) => <li key={i}>{ing}</li>);
         return (
-            <div>
+            <div className="recipe">
                 <h2>{this.props.title}</h2>
                 <ul>
                     {ingredients}

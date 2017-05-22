@@ -1,5 +1,111 @@
-#modal {
-    height: 300px;
-    width: 300px;
-    
+body {
+    background-image: url('/public/curry.jpg');
+    background-size: cover;
+    .container {
+        margin: auto;
+        width: 80%;
+        max-width: 800px;
+        background: white; 
+        border: none;
+        border-radius: 10px;
+        padding: 5px 20px 20px 20px;
+        .recipelist {
+            top: 50px;
+            margin: auto;
+            list-style-type: none;
+            padding-left: 0px;
+            .recipe {
+                border: 1px solid grey;
+                border-radius: 10px;
+                padding: 10px;
+                padding-top: 0px;
+                margin-bottom: 10px;
+            }   
+        }
+        #modal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            height: 300px;
+            width: 400px;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            background: white;
+            padding: 20px;
+            border-radius: 10px; 
+            input, label {
+                display: block;
+                margin-bottom: 10px;
+            }
+            label {
+                font-size: 20px;
+            }
+            input {
+                height: 30px;
+                padding: 5px;
+                border: 1px solid grey;
+                border-radius: 3px;
+                width: 90%;
+                &:focus {
+                    outline: 2px grey;
+                }
+            }
+            #save, #close {
+                background-color: #0cb418;
+                bottom: 20px;
+                left: 20px;
+                position: absolute;
+                color: white;
+                border: none;
+                border-radius: 10px;
+                height: 40px;
+                padding: 5px 10px;
+                font-size: 20px;
+            }
+
+            #close {
+                background-color: #c60d0d;            
+                right: 20px;
+                left: auto;
+            }
+        }
+
+        #backdrop {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0px;
+            left: 0px;
+            z-index: 9998;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        #github {
+            right: 20px;
+            bottom: 20px;
+            position: absolute;
+            img {
+                width: 64px;
+                height: 64px;
+            }
+        }
+
+        #addrecipe {
+            right: 20px;
+            top: 20px;
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            font-size: 64px;
+            line-height: 0px;
+            background: #ddd;
+            border-radius: 50%;
+            border: none;
+            &:focus {
+                outline: 0;
+            }
+        }
+    }
 }
+
+

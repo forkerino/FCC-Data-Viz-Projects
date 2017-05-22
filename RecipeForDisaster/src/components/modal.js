@@ -15,7 +15,9 @@ export default class Modal extends Component {
     }
 
     componentWillReceiveProps(props){
-        this.setState({recipeName: props.modalContent.recipe, ingredients: props.modalContent.ingredients, id: props.modalContent.id});
+        if (props.modalContent.ingredients){
+            this.setState({recipeName: props.modalContent.recipe, ingredients: props.modalContent.ingredients.join(', '), id: props.modalContent.id});
+        } 
     }
 
     updateName(e){
@@ -29,25 +31,27 @@ export default class Modal extends Component {
     render() {
         if (!this.props.isModalOpen) return null;
         return (
-            
-            <div id="modal">
-                <h2>{this.props.modalContent.title}</h2>
-                <form>
-                    <label htmlFor="recipeName">Recipe</label>
-                    <input 
-                        value={this.state.recipeName} 
-                        placeholder="Enter recipe name" 
-                        id="recipeName"
-                        onChange={this.updateName}/>
-                    <label htmlFor="ingredients">Ingredients</label>
-                    <input 
-                        value={this.state.ingredients} 
-                        placeholder="Enter ingredients" 
-                        id="ingredients"
-                        onChange={this.updateIngredients}/>
-                    <button onClick={(e) => this.props.saveRecipe(e, this.state.recipeName, this.state.ingredients, this.state.id)}>Save</button>
-                    <button onClick={this.props.closeModal}>Close</button>
-                </form>
+            <div>            
+                <div id="modal">
+                    <h2>{this.props.modalContent.title}</h2>
+                    <form>
+                        <label htmlFor="recipeName">Recipe</label>
+                        <input 
+                            value={this.state.recipeName} 
+                            placeholder="Enter recipe name" 
+                            id="recipeName"
+                            onChange={this.updateName}/>
+                        <label htmlFor="ingredients">Ingredients (separated by commas)</label>
+                        <input 
+                            value={this.state.ingredients} 
+                            placeholder="Enter ingredients" 
+                            id="ingredients"
+                            onChange={this.updateIngredients}/>
+                        <button id="save" onClick={(e) => this.props.saveRecipe(e, this.state.recipeName, this.state.ingredients, this.state.id)}>Save</button>
+                        <button id="close" onClick={this.props.closeModal}>Close</button>
+                    </form>
+                </div>
+                <div id="backdrop" onClick={this.props.closeModal}></div>
             </div>
         )
     }
