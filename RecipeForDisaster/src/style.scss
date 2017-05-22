@@ -24,11 +24,40 @@ body {
                 padding: 10px;
                 padding-top: 0px;
                 margin-bottom: 10px;
+                display: flex;
+                flex-direction: column;
+                h2 {
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                }
                 ul {
                     margin-bottom: 5px;
+                    padding-top: 10px;
+                    padding-left: 10px;
                     li {
+                        display: inline;
                         margin-bottom: 3px;
+                        margin-right: 10px;
+                        line-height: 1.1em;
+                        &::before{
+                            content: '➤ ';
+                            font-size: 0.8em;
+                        }
                     }
+                }
+                .edit, .delete {
+                    float: left;
+                    height: 30px;
+                    font-size: 20px;
+                    background-color: #0cb418;
+                    border: 0;
+                    border-radius: 5px;
+                    padding: 5px 10px;
+                    color: white;
+                    margin-right: 10px;
+                }
+                .delete {
+                    background-color: #c60d0d;
                 }
             }   
         }

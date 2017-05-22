@@ -34,19 +34,27 @@ class App extends Component {
         this.deleteRecipe = this.deleteRecipe.bind(this);
         this.selectRecipe = this.selectRecipe.bind(this);
     }
-
+    componentWillMount() {
+        if (typeof localStorage["recipesForDisaster"] != "undefined"){
+            this.setState({recipes: JSON.parse(localStorage["recipesForDisaster"])});
+        } 
+    }
+    componentDidUpdate(){
+        localStorage.setItem("recipesForDisaster", JSON.stringify(this.state.recipes));
+    }
     addRecipe() {
-        this.setState({modal: {title:"Add Recipe"}, isModalOpen: true});
+        this.setState({modal: {title:"Add Recipe"}, isModalOpen: true, selectedRecipe: null});
     }
 
     closeModal() {
         this.setState({modal: {}, isModalOpen: false});
     }
 
-    saveRecipe(e, name, ingredients, id = Math.max(...Object.keys(this.state.recipes).map(Number))+1){
+    saveRecipe(e, name, ingredients, id){
+        id = id || Math.max(...Object.keys(this.state.recipes).map(Number))+1;
         e.preventDefault();
         let newRecipes = Object.assign({}, this.state.recipes, {[id]: {id: id, title: name, ingredients: ingredients.split(',').map(e=>e.trim())}});
-        this.setState({recipes: newRecipes, isModalOpen: false, modal: {}});
+        this.setState({recipes: newRecipes, isModalOpen: false, modal: {}, selectedRecipe: id});
     }
 
     editRecipe(id, e) {
@@ -65,7 +73,11 @@ class App extends Component {
     }
 
     selectRecipe(id,e){
-        this.setState({selectedRecipe: id});
+        if (this.state.selectedRecipe == id) {
+            this.setState({selectedRecipe: null});
+        } else {
+            this.setState({selectedRecipe: id});
+        }
     }
 
     render() {
