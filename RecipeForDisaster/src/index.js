@@ -41,7 +41,7 @@ class App extends Component {
         this.setState({modal: {}, isModalOpen: false});
     }
 
-    saveRecipe(e, name, ingredients, id = Math.floor(Math.random()*1000000042)){
+    saveRecipe(e, name, ingredients, id = Math.max(...Object.keys(this.state.recipes).map(Number))+1){
         e.preventDefault();
         let newRecipes = Object.assign({}, this.state.recipes, {[id]: {id: id, title: name, ingredients: ingredients.split(',').map(e=>e.trim())}});
         this.setState({recipes: newRecipes, isModalOpen: false});
