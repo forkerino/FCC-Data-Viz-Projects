@@ -1,8 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Khula');
+
 body {
     background-image: url('/public/curry.jpg');
     background-size: cover;
     .container {
+        font-family: 'Khula', sans-serif;
         margin: auto;
+        margin-top: 30px;
         width: 80%;
         max-width: 800px;
         background: white; 
@@ -20,13 +24,19 @@ body {
                 padding: 10px;
                 padding-top: 0px;
                 margin-bottom: 10px;
+                ul {
+                    margin-bottom: 5px;
+                    li {
+                        margin-bottom: 3px;
+                    }
+                }
             }   
         }
         #modal {
             position: absolute;
             top: 50%;
             left: 50%;
-            height: 300px;
+            height: 350px;
             width: 400px;
             transform: translate(-50%, -50%);
             z-index: 9999;
@@ -61,6 +71,7 @@ body {
                 height: 40px;
                 padding: 5px 10px;
                 font-size: 20px;
+                margin-top: 20px;
             }
 
             #close {

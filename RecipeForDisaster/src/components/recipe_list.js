@@ -16,7 +16,9 @@ export default class RecipeList extends Component {
                             id = {recipe.id}
                             title = {recipe.title}
                             editRecipe = {this.props.editRecipe}
-                            deleteRecipe = {this.props.deleteRecipe}/>
+                            deleteRecipe = {this.props.deleteRecipe}
+                            selectedRecipe = {this.props.selectedRecipe}
+                            selectRecipe = {this.props.selectRecipe}/>
                     </li>
                 );
             });

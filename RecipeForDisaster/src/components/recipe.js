@@ -10,12 +10,16 @@ export default class Recipe extends Component {
         const ingredients = this.props.ingredients.map((ing,i) => <li key={i}>{ing}</li>);
         return (
             <div className="recipe">
-                <h2>{this.props.title}</h2>
-                <ul>
-                    {ingredients}
-                </ul>
-                <button onClick={(e) => this.props.editRecipe(this.props.id, e)}>Edit</button>
-                <button onClick={(e) => this.props.deleteRecipe(this.props.id, e)}>Delete</button>
+                <h2 onClick={(e) => this.props.selectRecipe(this.props.id, e)}>{this.props.title}</h2>
+                { this.props.selectedRecipe == this.props.id &&
+                        <div>
+                            <ul>
+                                {ingredients}
+                            </ul>
+                            <button onClick={(e) => this.props.editRecipe(this.props.id, e)}>Edit</button>
+                            <button onClick={(e) => this.props.deleteRecipe(this.props.id, e)}>Delete</button>
+                        </div>
+                }
             </div>
         )
     }

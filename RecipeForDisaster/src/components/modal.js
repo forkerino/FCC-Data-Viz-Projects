@@ -35,7 +35,7 @@ export default class Modal extends Component {
                 <div id="modal">
                     <h2>{this.props.modalContent.title}</h2>
                     <form>
-                        <label htmlFor="recipeName">Recipe</label>
+                        <label htmlFor="recipeName">Dish</label>
                         <input 
                             value={this.state.recipeName} 
                             placeholder="Enter recipe name" 

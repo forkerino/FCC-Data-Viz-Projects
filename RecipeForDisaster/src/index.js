@@ -23,7 +23,8 @@ class App extends Component {
                     }
             },
             isModalOpen: false, 
-            modal: {}
+            modal: {},
+            selectedRecipe: null
 
         }
         this.addRecipe = this.addRecipe.bind(this);
@@ -31,6 +32,7 @@ class App extends Component {
         this.saveRecipe = this.saveRecipe.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.deleteRecipe = this.deleteRecipe.bind(this);
+        this.selectRecipe = this.selectRecipe.bind(this);
     }
 
     addRecipe() {
@@ -62,6 +64,10 @@ class App extends Component {
         this.setState(newState);
     }
 
+    selectRecipe(id,e){
+        this.setState({selectedRecipe: id});
+    }
+
     render() {
         return (
             <div className="container">
@@ -70,7 +76,9 @@ class App extends Component {
                 <Modal isModalOpen={this.state.isModalOpen} closeModal={this.closeModal} saveRecipe={this.saveRecipe} modalContent={this.state.modal}/>
                 <RecipeList recipes={this.state.recipes}
                     editRecipe={this.editRecipe}
-                    deleteRecipe={this.deleteRecipe}/>
+                    deleteRecipe={this.deleteRecipe}
+                    selectedRecipe = {this.state.selectedRecipe}
+                    selectRecipe = {this.selectRecipe}/>
                 
                 <a id="github" href="https://github.com/forkerino" target="_blank"><img src="https://cdn.iconscout.com/public/images/icon/free/png-128/github-brand-logo-3c9d78d3a4407227-128x128.png"/></a>
             </div>
