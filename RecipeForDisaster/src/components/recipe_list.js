@@ -10,8 +10,9 @@ export default class RecipeList extends Component {
     render() {
         const recipeItems = () => {
             return _.values(this.props.recipes).map(recipe => {
+                console.log(recipe);
                 return (
-                    <li key={recipe.id}>
+                    <li key={"id"+ recipe.id}>
                         <Recipe ingredients = {recipe.ingredients}
                             id = {recipe.id}
                             title = {recipe.title}

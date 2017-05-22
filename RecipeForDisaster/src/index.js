@@ -38,12 +38,12 @@ class App extends Component {
     }
 
     closeModal() {
-        this.setState({isModalOpen: false});
+        this.setState({modal: {}, isModalOpen: false});
     }
 
-    saveRecipe(e, name, ingredients, id = Math.floor(Math.random()*100000)){
+    saveRecipe(e, name, ingredients, id = Math.floor(Math.random()*1000000042)){
         e.preventDefault();
-        let newRecipes = Object.assign({}, this.state.recipes, {[id]: {title: name, ingredients: ingredients.split(',').map(e=>e.trim())}});
+        let newRecipes = Object.assign({}, this.state.recipes, {[id]: {id: id, title: name, ingredients: ingredients.split(',').map(e=>e.trim())}});
         this.setState({recipes: newRecipes, isModalOpen: false});
     }
 
