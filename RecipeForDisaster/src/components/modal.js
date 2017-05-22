@@ -16,7 +16,7 @@ export default class Modal extends Component {
                     <input value={this.props.modalContent.recipe} placeholder="Enter recipename" id="recipeName"/>
                     <label htmlFor="ingredients">Ingredients</label>
                     <input value={this.props.modalContent.ingredients} placeholder="Enter ingredients" id="ingredients"/>
-                    <button type="submit">Save</button>
+                    <button onClick={this.props.saveRecipe}>Save</button>
                     <button onClick={this.props.closeModal}>Close</button>
                 </form>
             </div>

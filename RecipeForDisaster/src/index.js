@@ -9,22 +9,26 @@ class App extends Component {
         super(props);
 
         this.state={
-            recipes: [
-                {
-                    title: "Apple Pie",
-                    ingredients: ["Apple","Sugar","Butter","Flour","Cinnamon"]
-                },
-                {
-                    title: "Brownies",
-                    ingredients: ["Chocolate", "Butter", "Flour", "Sugar"]
-                }
-            ],
+            recipes: {
+                    1: {
+                        id: 1,
+                        title: "Apple Pie",
+                        ingredients: ["Apple","Sugar","Butter","Flour","Cinnamon"]
+                    },
+                    2: {
+                        id: 2,
+                        title: "Brownies",
+                        ingredients: ["Chocolate", "Butter", "Flour", "Sugar"]
+                    }
+            },
             isModalOpen: false, 
             modal: {}
 
         }
         this.addRecipe = this.addRecipe.bind(this);
+        this.editRecipe = this.editRecipe.bind(this);
         this.closeModal = this.closeModal.bind(this);
+        this.deleteRecipe = this.deleteRecipe.bind(this);
     }
 
     addRecipe() {
@@ -35,17 +39,24 @@ class App extends Component {
         this.setState({isModalOpen: false});
     }
 
-    editRecipe() {
-        alert('edit');
+    saveRecipe() {
+        alert('save');
     }
-    deleteRecipe() {
-        alert('delete');
+
+    editRecipe(id, e) {
+        if (id) {
+            this.setState({modal: {recipe: this.state.recipes[id].title, ingredients: this.state.recipes[id].ingredients, title: "Edit Recipe"}, isModalOpen: true});
+        } 
+    }
+
+    deleteRecipe(id, e) {
+        this.setState({isModalOpen: false});
     }
 
     render() {
         return (
             <div>
-                <Modal isModalOpen={this.state.isModalOpen} closeModal={this.closeModal} modalContent={this.state.modal}/>
+                <Modal isModalOpen={this.state.isModalOpen} closeModal={this.closeModal} saveRecipe={this.saveRecipe} modalContent={this.state.modal}/>
                 <RecipeList recipes={this.state.recipes}
                     editRecipe={this.editRecipe}
                     deleteRecipe={this.deleteRecipe}/>

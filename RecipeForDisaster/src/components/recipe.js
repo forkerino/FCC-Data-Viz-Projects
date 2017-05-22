@@ -7,15 +7,15 @@ export default class Recipe extends Component {
     }
 
     render(){
-        const ingredients = this.props.recipe.ingredients.map((ing,i) => <li key={i}>{ing}</li>);
+        const ingredients = this.props.ingredients.map((ing,i) => <li key={i}>{ing}</li>);
         return (
             <div>
-                <h2>{this.props.recipe.title}</h2>
+                <h2>{this.props.title}</h2>
                 <ul>
                     {ingredients}
                 </ul>
-                <button onClick={this.props.editRecipe}>Edit</button>
-                <button onClick={this.props.deleteRecipe}>Delete</button>
+                <button onClick={(e) => this.props.editRecipe(this.props.id, e)}>Edit</button>
+                <button onClick={(e) => this.props.deleteRecipe(this.props.id, e)}>Delete</button>
             </div>
         )
     }

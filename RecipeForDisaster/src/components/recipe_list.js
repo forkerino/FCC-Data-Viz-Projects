@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Recipe from './recipe';
+import _ from 'lodash';
 
 export default class RecipeList extends Component {
     constructor (props){
@@ -7,14 +8,22 @@ export default class RecipeList extends Component {
     }  
 
     render() {
-        const recipes = this.props.recipes.map((recipe, i) => <Recipe 
-            key={i} 
-            recipe={recipe} 
-            editRecipe={this.props.editRecipe}
-            deleteRecipe={this.props.deleteRecipe}/>);
+        const recipeItems = () => {
+            return _.values(this.props.recipes).map(recipe => {
+                return (
+                    <li key={recipe.id}>
+                        <Recipe ingredients = {recipe.ingredients}
+                            id = {recipe.id}
+                            title = {recipe.title}
+                            editRecipe = {this.props.editRecipe}
+                            deleteRecipe = {this.props.deleteRecipe}/>
+                    </li>
+                );
+            });
+        } 
         return (
             <div>
-                {recipes}
+                {recipeItems()}
             </div>
         )
 
