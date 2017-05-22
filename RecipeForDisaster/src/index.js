@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import RecipeList from './components/recipe_list';
 import Modal from './components/modal';
+import _ from 'lodash';
 require('./style.scss');
 
 class App extends Component {
@@ -27,6 +28,7 @@ class App extends Component {
         }
         this.addRecipe = this.addRecipe.bind(this);
         this.editRecipe = this.editRecipe.bind(this);
+        this.saveRecipe = this.saveRecipe.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.deleteRecipe = this.deleteRecipe.bind(this);
     }
@@ -39,18 +41,24 @@ class App extends Component {
         this.setState({isModalOpen: false});
     }
 
-    saveRecipe() {
-        alert('save');
+    saveRecipe(e, name, ingredients, id = Math.floor(Math.random()*100000)){
+        e.preventDefault();
+        let newRecipes = Object.assign({}, this.state.recipes, {[id]: {title: name, ingredients: ingredients.split(',').map(e=>e.trim())}});
+        this.setState({recipes: newRecipes, isModalOpen: false});
     }
 
     editRecipe(id, e) {
         if (id) {
-            this.setState({modal: {recipe: this.state.recipes[id].title, ingredients: this.state.recipes[id].ingredients, title: "Edit Recipe"}, isModalOpen: true});
+            this.setState({modal: {recipe: this.state.recipes[id].title, ingredients: this.state.recipes[id].ingredients, title: "Edit Recipe", id: id}, isModalOpen: true});
         } 
     }
 
     deleteRecipe(id, e) {
-        this.setState({isModalOpen: false});
+        let newState = {
+            recipes: _.omit(this.state.recipes, id),
+            isModalOpen: false
+        }
+        this.setState(newState);
     }
 
     render() {
